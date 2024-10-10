@@ -1,0 +1,21 @@
+<h2>Reactive Form </h2>
+<div class="container p-5">
+<form [formGroup]="registerForm" (ngSubmit)="onSubmit()">
+    <div class="mb-3 mt-3">
+        <label for="customerName" class="form-label">Cusomer Name: </label>
+        <input id="customerName" class="form-control" type="text" formControlName="customerName">
+  
+        <span
+        *ngIf="!registerForm.get('customerName').valid && registerForm.get('customerName').touched"
+        class="text-danger">Required Customer Name!</span>
+  
+    </div>
+    <div class="mb-3 mt-3">
+        <label for="customerEmail" class="form-label">Email: </label>
+        <input id="customerEmail" class="form-control" type="text"  formControlName="customerEmail">
+    </div>
+    <p>Complete the form to enable button.</p>
+    <button class="btn btn-primary" type="submit" [disabled]="!registerForm.valid">Submit</button>
+</form>
+{{registerForm.value | json}}
+</div>
